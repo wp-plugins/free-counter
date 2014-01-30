@@ -1,5 +1,5 @@
 <link rel='stylesheet' href='<?php echo plugins_url("counter_style.css",__FILE__);?>' type='text/css' media='all' />
-<script type="text/javascript" src="<?php echo plugins_url("counter.js",__FILE__);?>"></script>
+<script type="text/javascript" src="<?php echo plugins_url("counter.js",__FILE__);?>"></script> 
 <div class="stat_block">
     <div class="stat_title">
         <?php echo "Statistic for your Counter"; ?>
