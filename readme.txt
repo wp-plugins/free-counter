@@ -3,8 +3,8 @@ Contributors: Free-counter
 Donate link: http://www.free-counter.org/donate/
 Tags: web stats, download counter, web, view, visits counter, online users, pageviews, search, ip, flags, followers, post hit counter, blog, metrika, dislike, odometer, visits, online, geo ip, social widget, referer, graph, chart, operating system, counter, traffic, ip geolocation, unique counter, countup, post counter plugin, users, hit counter, statistics, totaliser, stat, id3, count, diagram, live, visit, traffic widget, count up, timer, geo location, geo, total, liveinternet, baby, simple counter, easy counter, ip address, page, hit, wordpress counter, wp counter, php counter, geo-ip, ban, ip counter, homepage, addthis, flag, site stats, besucherzähler, page views, age, http, zähler, social media counter, postviews, fans, click counter, user, statistic, accounts, plugin, counters, visitors, browser, system, web analytics, flag counter, flaggen, visitor counter, web counter, website, stats, hits, referrer, visitors counter, traffic count, data, widget
 Requires at least: 2.5.1
-Tested up to: 3.8.0
-Stable tag: 1.0.0
+Tested up to: 3.8.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
