@@ -1,7 +1,7 @@
 === Free counter ===
 Contributors: Free-counter
 Donate link: http://www.free-counter.org/donate/
-Tags: counter, idget, Post, plugin, admin, posts, sidebar, twitter, google, comments, images, page, image, links
+Tags: widget, counter, Post, plugin, admin, posts, sidebar, twitter, google, comments, images, page, image, links
 Requires at least: 2.5.1
 Tested up to: 3.8.1
 Stable tag: 1.0.3
