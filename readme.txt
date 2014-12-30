@@ -3,7 +3,7 @@ Contributors: Free-counter
 Donate link: http://www.free-counter.org/donate/
 Tags: widget, counter, Post, plugin, admin, posts, sidebar, google, page, image, links, hit counter, buddypress, free
 Requires at least: 2.5.1
-Tested up to: 3.8.1
+Tested up to: 4.1
 Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
