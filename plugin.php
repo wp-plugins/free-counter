@@ -193,9 +193,7 @@
         {
             global $menu;
 
-            //tries to detect an available menu position. Usually at position 3 (right after the Dashboard menu)
-            //there is an opening, but if not, it will find the next available position.
-            $counterize_menu_position = 26;
+            $menu_position = 26;
 
             add_menu_page(
             'Statistic for Counter', 
@@ -204,7 +202,7 @@
             'counter_free_plagin', 
             array('counter_free_plagin', 'stat_view'),
             plugins_url('/free-counter.org_icon.png', __FILE__),
-            $counterize_menu_position
+            $menu_position
             );
         }
         static function save_account()
@@ -298,7 +296,7 @@
             $form = ob_get_clean();
             echo $form;
         }
-        function exportToCsv() 
+        static function exportToCsv() 
         {
 
             $filename = "export.csv";
@@ -335,7 +333,7 @@
             echo self::array2csv($data);
             exit;
         }
-        function  download_send_headers($filename)
+        static function  download_send_headers($filename)
         {
             // disable caching
             $now = gmdate("D, d M Y H:i:s");
@@ -350,7 +348,7 @@
             header("Content-Disposition: attachment;filename={$filename}");
             header("Content-Transfer-Encoding: binary");
         }
-        function array2csv(array &$array)
+        static function array2csv(array &$array)
         {
             if (count($array) == 0) {
                 return null;
@@ -365,12 +363,12 @@
         }
 
 
-        function saveHash($data = array())
+        static function saveHash($data = array())
         {
             file_put_contents(self::$file_hash, serialize($data));
         }
 
-        function getHash() 
+        static function getHash() 
         {
             $data = array();
             if (file_exists(self::$file_hash)) {
@@ -382,7 +380,7 @@
             return $data;
         }
 
-        function get_pages($page, $pages)
+        static function get_pages($page, $pages)
         {
             echo '<div id="page_item">Page Item: <select  onchange="setCountShowVisitorsOnDays(this)">';
             $count_item_in_pages = array(15, 30, 50);
