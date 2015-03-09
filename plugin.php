@@ -21,7 +21,11 @@
         static private $data_counter = array(); 
 
         static private $file_hash = "";
-
+        
+        /**
+        * @method on_activate - this method to adding the default option for the widget and plugin
+        * 
+        */
         static function on_activate()
         {
             $data_post = array("action" => "create_new_counter", "site_url" => get_option('siteurl'));
@@ -42,7 +46,10 @@
                 }
             } 
         }
-
+        /**
+        * @method sendToServer - this method sending to server the data 
+        * 
+        */
         static public function sendToServer($postdata = array())
         {
 
@@ -176,7 +183,9 @@
             $array_dates['end_week_time'] = $date_end_week;
             return $array_dates;
         }
-
+        /**
+        * @method on_deactivate - this method delete option in the widget and plugin
+        */
         static function on_deactivate()
         {
             delete_option(_PREFIX . 'counter_id');
@@ -193,7 +202,8 @@
         {
             global $menu;
 
-            $menu_position = 26;
+            // position in admin menu
+            $menu_position = '26.1234567891';
 
             add_menu_page(
             'Statistic for Counter', 
