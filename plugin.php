@@ -46,6 +46,7 @@
                 }
             } 
         }
+        
         /**
         * @method sendToServer - this method sending to server the data 
         * 
@@ -110,8 +111,8 @@
                     }
                 } 
             }
-
         }
+        
         private static function getWeekDates() 
         {
             $week_day = date("w");
@@ -183,6 +184,7 @@
             $array_dates['end_week_time'] = $date_end_week;
             return $array_dates;
         }
+        
         /**
         * @method on_deactivate - this method delete option in the widget and plugin
         */
@@ -197,7 +199,11 @@
             delete_option(_PREFIX . 'email');
             delete_option(_PREFIX . 'password');
         }
-
+        
+        /**
+        * @method draw_menu - adds a menu item
+        * 
+        */
         static function draw_menu()
         {
             global $menu;
@@ -254,6 +260,10 @@
                 header("location: " . admin_url( 'admin.php?page=counter_free_plagin' ));
             }
         }
+        /**
+        * @method stat_view - view Statistics
+        * 
+        */
         static function stat_view() 
         {
 
@@ -306,6 +316,10 @@
             $form = ob_get_clean();
             echo $form;
         }
+        /**
+        * @method exportToCsv - export data to a CSV file
+        * 
+        */
         static function exportToCsv() 
         {
 
@@ -343,6 +357,11 @@
             echo self::array2csv($data);
             exit;
         }
+        /**
+        * @method - setting the headers for the export file
+        * 
+        * @param string $filename 
+        */
         static function  download_send_headers($filename)
         {
             // disable caching
@@ -358,6 +377,12 @@
             header("Content-Disposition: attachment;filename={$filename}");
             header("Content-Transfer-Encoding: binary");
         }
+        /**
+        * @method array2csv - conversion to CSV data
+        * 
+        * @param array $array
+        * @return string
+        */
         static function array2csv(array &$array)
         {
             if (count($array) == 0) {
@@ -476,8 +501,6 @@
         {
             if (get_option(_PREFIX . 'images')) {
                 register_widget('counter_free_widget');
-                /*  wp_register_script('jquery_my', "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", false, false);
-                wp_enqueue_script('jquery_my');    */
             }
         }
         static function check_stat()
