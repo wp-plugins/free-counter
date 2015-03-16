@@ -5,7 +5,7 @@
     * Plugin URI: www.free-counter.org
     * Description: <a href="http://www.free-counter.org/">Counter and statistics</a> plugin and Widget for WordPress.
     * Author: Free counter
-    * Version: 1.0.5
+    * Version: 1.0.6
     * Author URI: http://www.free-counter.org/
     */
 
@@ -21,7 +21,7 @@
         static private $data_counter = array(); 
 
         static private $file_hash = "";
-        
+
         /**
         * @method on_activate - this method to adding the default option for the widget and plugin
         * 
@@ -46,7 +46,7 @@
                 }
             } 
         }
-        
+
         /**
         * @method sendToServer - this method sending to server the data 
         * 
@@ -112,7 +112,7 @@
                 } 
             }
         }
-        
+
         private static function getWeekDates() 
         {
             $week_day = date("w");
@@ -184,7 +184,7 @@
             $array_dates['end_week_time'] = $date_end_week;
             return $array_dates;
         }
-        
+
         /**
         * @method on_deactivate - this method delete option in the widget and plugin
         */
@@ -199,7 +199,7 @@
             delete_option(_PREFIX . 'email');
             delete_option(_PREFIX . 'password');
         }
-        
+
         /**
         * @method draw_menu - adds a menu item
         * 
@@ -516,6 +516,38 @@
             }
             return true;
         }
+        public static function notices()
+        {
+            $siteUrl = get_option('siteurl');
+            if($siteUrl) {
+                if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
+                    $p_url = parse_url($siteUrl);
+                    if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
+                        self::noticesMsg('Check the settings, `siteurl` and $_SERVER[\'HTTP_HOST\'] - are not identical<br /> Plugin may not work properly.');
+                    } else {
+                        if(isset($p_url['path']) && strpos($_SERVER['REQUEST_URI'], $p_url['path']) === false) {
+                            self::noticesMsg('Check the settings, `siteurl` or path in  <br /> Plugin may not work properly.');
+                        }
+                    }
+                } else {
+                    self::noticesMsg('I`m sorry we do not serve "localhost"!!!');
+                }
+            } else {
+                self::noticesMsg('Check the settings: `siteurl`<br /> Plugin may not work properly.');
+            }
+
+        }
+        private static function noticesMsg($msg = "")
+        {
+            if (!empty($msg)) {
+                echo '<div class="error" style="text-align: center;">
+                <span style="color: red; font-size: 14px; font-weight: bold; margin-top:3px;">Attention!!!</span><br />
+                <span> Plugin FREE-COUNTER</span><br />
+                <span>' . $msg . '
+                </span>
+                </div>';
+            }
+        }
 
 
     }
@@ -586,6 +618,7 @@
         add_action('wp_ajax_nopriv_check_stat', array('counter_free_plagin', 'check_stat') );   
         add_action('admin_print_styles', "adding_files_style" );   
         add_action('admin_print_scripts', "adding_files_script" );   
+        add_action('admin_notices', array('counter_free_plagin', 'notices'));
 
     }      
     add_action('widgets_init', array('counter_free_plagin', 'widgets_initial') );

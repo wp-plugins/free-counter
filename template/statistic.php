@@ -30,7 +30,7 @@
                                 </div>
                                 <div style="margin-top: 14px;">
                                     <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "forgotpassword"?>', 'Forgot Password');">Forgot password?</a> <br />
-                                    <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "?contact=show"?>', 'contact');">Need help? / Contact us</a>
+                                    <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "contact"?>', 'contact');">Need help? / Contact us</a>
                                 </div>
                             </div>
                             <?php
@@ -43,7 +43,7 @@
                                 </div>
                                 <div style="margin-top: 14px;">
                                     <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "forgotpassword"?>', 'Forgot Password');">Forgot password?</a> <br />
-                                    <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "?contact=show"?>', 'contact');">Need help? / Contact us</a>
+                                    <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "contact"?>', 'contact');">Need help? / Contact us</a>
                                 </div>
                             </div>
                             <?php
@@ -64,7 +64,7 @@
                 <span class="b-3">Advantages of your registration at free-counter are:</span>
                 <ul>
                     <ol class="b_2"> Password protected statistics; </ol>
-                    <ol class="b_2"> Your counter <a href="<?php echo SERVER_URL_VISIT . "/getstat.php?id={$id_counter}{$image_default}{$image_hidden}"?>" target="_blank">full statistics data</a>; </ol>
+                    <ol class="b_2"> Your counter <a href="<?php echo SERVER_URL_VISIT . "en/{$id_counter}{$image_default}{$image_hidden}"?>" target="_blank">full statistics data</a>; </ol>
                     <ol class="b_2"> Manage & Control all of your counters only with one account; </ol>
                     <ol class="b_2"> For your further new counter you do not have to register; </ol>
                     <ol class="b_2"> and so on… :) </ol>   
@@ -497,7 +497,8 @@
                     <th class="w-1">System</th>
                     <th class="w-1">Browser</th>
                     <th class="w-1">Returns</th>
-                    <th class="w-4">Referer</th>
+                    <th class="w-3">Referer</th>
+                    <th class="w-2">Landing Page</th>
                 </tr>
                 <?php if (isset($record)) {
                         $i = 0;
@@ -533,9 +534,19 @@
                                     }
                                 ?>
                             </td>
+                            <td style="text-align: left;">
+                                <?php  
+                                    if (!empty($value[11]['url_landing'])) {
+                                        $landing_url = (strpos($value[11]['url_landing'], "http://") === false && strpos($value[11]['url_landing'], "https://") === false) ? "http://{$value[11]['url_landing']}" : $value[11]['url_landing'];
+                                        echo '<a href="' . $landing_url . '" title="' . $landing_url . '">' . $landing_url . '</a>';
+                                    } else {
+                                        echo "-";
+                                    }
+                                ?>
+                            </td>
                         </tr>
                         <tr id="<?php echo $hash;?>" style="display: none; "> 
-                            <td colspan="6" width="100%" style="text-align: center;">
+                            <td colspan="7" width="100%" style="text-align: center;">
                                 <div class="info_stat_all">
 
                                     <table class="info">
@@ -560,14 +571,26 @@
                                         <tr>
                                             <td align="left">City</td>
                                             <td align="left"><?php echo $value[3]['city'];?></td>
-                                            <td colspan="2"></td> 
+                                            <td align="left">Landing Page</td> 
+                                            <td align="left">
+                                                <?php  
+                                                    if (!empty($value[11]['url_landing'])) {
+                                                        $landing_url = (strpos($value[11]['url_landing'], "http://") === false && strpos($value[11]['url_landing'], "https://") === false) ? "http://{$value[11]['url_landing']}" : $value[11]['url_landing'];
+                                                        echo '<a href="' . $landing_url . '" title="' . $landing_url . '">' . $landing_url . '</a>';
+                                                    } else {
+                                                        echo "-";
+                                                    }
+                                                ?>
+                                            </td> 
+                                             
                                         </tr>
                                         <tr>
                                             <td align="left">System</td>
                                             <td align="left">
                                                 <img src="<?php echo IMG . $value[6]['img']; ?>" alt="<?php echo($value[6]['name']); ?>" title="<?php echo($value[6]['name']); ?>">  <?php echo($value[6]['name']); ?>
                                             </td>
-                                            <td colspan="2"></td> 
+                                            <td align="left">Possible text-query</td>
+                                            <td align="left"><?php echo $value[11]['text_landing']?></td>
                                         </tr>
                                         <tr>
                                             <td align="left">Browser</td>
