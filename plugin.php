@@ -497,6 +497,11 @@
 
             return array("max" => $max, "data" => $data);
         }
+        
+        /**
+        * @method widgets_initial - initialize widget
+        * 
+        */
         static function widgets_initial() 
         {
             if (get_option(_PREFIX . 'images')) {
