@@ -516,6 +516,11 @@
             }
             return true;
         }
+        
+        /**
+        * @method notices - Check the settings for Free-counter
+        * 
+        */
         public static function notices()
         {
             $siteUrl = get_option('siteurl');
