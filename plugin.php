@@ -221,7 +221,7 @@
             $menu_position
             );
         }
-        
+
         /**
         * @method save_account - Registration for the hide password statistic and great opportunities
         * 
@@ -502,7 +502,7 @@
 
             return array("max" => $max, "data" => $data);
         }
-        
+
         /**
         * @method widgets_initial - initialize widget
         * 
@@ -526,7 +526,7 @@
             }
             return true;
         }
-        
+
         /**
         * @method notices - Check the settings for Free-counter
         * 
@@ -550,8 +550,13 @@
             } else {
                 self::noticesMsg('Check the settings: `siteurl`<br /> Plugin may not work properly.');
             }
-
         }
+        
+        /**
+        * @method noticesMsg - output message to admin panel 
+        * 
+        * @param string $msg
+        */
         private static function noticesMsg($msg = "")
         {
             if (!empty($msg)) {
