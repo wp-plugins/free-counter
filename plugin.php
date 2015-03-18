@@ -221,6 +221,11 @@
             $menu_position
             );
         }
+        
+        /**
+        * @method save_account - Registration for the hide password statistic and great opportunities
+        * 
+        */
         static function save_account()
         {
             if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['password_repeat'])) {
