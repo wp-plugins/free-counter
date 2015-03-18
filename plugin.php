@@ -550,8 +550,13 @@
             } else {
                 self::noticesMsg('Check the settings: `siteurl`<br /> Plugin may not work properly.');
             }
-
         }
+        
+        /**
+        * @method noticesMsg - output message to admin panel 
+        * 
+        * @param string $msg
+        */
         private static function noticesMsg($msg = "")
         {
             if (!empty($msg)) {
