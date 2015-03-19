@@ -1,7 +1,3 @@
-<!-- <link rel='stylesheet' href='<?php echo plugins_url("counter_style.css",__FILE__);?>' type='text/css' media='all' />
-<script type="text/javascript" src="<?php echo plugins_url("counter.js",__FILE__);?>"></script> -->
-
-
 <?php if (empty($email) && empty($password)) {?>    
     <div class="form-account">   
         <div class="form-account-block">

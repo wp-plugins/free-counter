@@ -1,11 +1,6 @@
 <?php
-
     if ($instance['images']) { 
     ?>
-   <!-- <script type="text/javascript" src="<?php echo plugins_url("jquery.minicolors.js",__FILE__);?>"></script>
-    <script type="text/javascript" src="<?php echo plugins_url("counter.js",__FILE__);?>"></script>
-    <link rel='stylesheet' href='<?php echo plugins_url("jquery.minicolors.css",__FILE__);?>' type='text/css' media='all' />
-    <link rel='stylesheet' href='<?php echo plugins_url("counter_style.css",__FILE__);?>' type='text/css' media='all' /> -->
     <table class="image_counter_table">
         <tr>
             <td colspan="2">Your custom counter:</td>
