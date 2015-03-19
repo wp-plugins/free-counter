@@ -1,3 +1,6 @@
+/**
+* set image in form
+*/
 var object_image = false;
 function saveImage(t, id_hidden, id_counter_tpe)
 {    
