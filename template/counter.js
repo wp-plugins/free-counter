@@ -19,6 +19,9 @@ function saveImage(t, id_hidden, id_counter_tpe)
     document.getElementById(id_counter_tpe).value = value;
     object_image = t;
 }
+/**
+* show default image
+*/
 function set_default_image(id, class_name)
 {
     if (document.getElementById(id) != null) {
