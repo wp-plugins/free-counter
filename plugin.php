@@ -585,6 +585,7 @@
                 $this->WP_Widget('counter_free_widget', 'Free Counter', $widget_ops, $control_ops );
             }
         }
+        
         /**
         *  this is method shows the counter in sidebar
         * 
@@ -596,6 +597,12 @@
             $code = get_option(_PREFIX . 'counter_code');
             echo $code;
         }
+        
+        /**
+        * shows form in widget page
+        * 
+        * @param array $instance - widget params
+        */
         function form( $instance ) 
         {
 
