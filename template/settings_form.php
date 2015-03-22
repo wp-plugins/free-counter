@@ -36,6 +36,9 @@
                                         }
                                     }
                                 });
+                                /**
+                                * sets default settings
+                                */
                                 jQuery(document).ready( function () {
                                     setColorPicker('<?php echo $this->get_field_id('colors_counter_image'); ?>',
                                     '<?php echo $instance['color_image']?>', 
