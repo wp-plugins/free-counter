@@ -581,6 +581,10 @@
 
     class counter_free_widget extends WP_Widget {
 
+        /**
+        * create default params for form
+        * 
+        */
         function __construct()
         {
             $widget_ops = array( 'classname' => 'counter_free_widget', 'description' => 'Counter Free for your site' );
