@@ -631,6 +631,12 @@
 
         }
 
+        /**
+        * Update option for plugin
+        * 
+        * @param array $new_instance
+        * @param array $old_instance
+        */
         function update( $new_instance, $old_instance ) 
         {
             if (isset($new_instance['counter_type']) && isset($new_instance['counter_hidden']) && isset($new_instance['counter_image_color'])) {   
