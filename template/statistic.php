@@ -1,4 +1,5 @@
-<?php if (empty($email) && empty($password)) {?>    
+<?php if (empty($email) && empty($password)) { // form registration for the great opportunities
+    ?>    
     <div class="form-account">   
         <div class="form-account-block">
             <div>
