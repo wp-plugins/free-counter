@@ -30,6 +30,9 @@ function set_default_image(id, class_name)
     }
 }
 
+/**
+* set custom image
+*/
 function setColorPicker(id, default_value, id_send_color_image, id_counter_tpe, id_div_parent, id_hidden_value) 
 {
     if (default_value == undefined || default_value == "") {
