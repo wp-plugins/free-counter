@@ -723,7 +723,6 @@
     /**
     * load styles and scrits
     * 
-    * @param mixed $stat - all load or general
     */
     function adding_files_style() {
         wp_register_style('free_counter_css', plugins_url('template/counter_style.css', __FILE__));
@@ -733,6 +732,10 @@
 
 
     }
+    /**
+    *  load javascript to admin panel
+    * 
+    */
     function adding_files_script()
     {
         wp_register_script('free_counter_script', plugins_url("template/counter.js",__FILE__));
