@@ -284,7 +284,7 @@
                     $i = 0;
                     foreach ($os['data'] as $o) {
                         $procent = round(($o['count']/$os['max'] )*100, 2);
-                        echo "['{$o[0]['name']}', {$procent}],";
+                        echo "['{$o[0]['operating_systems']}', {$procent}],";
                         if ($i == 5) {
                             break;
                         }
