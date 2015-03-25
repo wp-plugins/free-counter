@@ -87,6 +87,9 @@ function get_stat(value)
         alert("ok");
     });   
 }
+/**
+* check form before submitting
+*/
 function verificationFrom() 
 {
     if (!checkmail(document.account_form.email.value)) {
