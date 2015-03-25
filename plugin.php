@@ -22,29 +22,36 @@
 
         static private $file_hash = "";
 
+        static private $activate = true;
+
         /**
         * @method on_activate - this method to adding the default option for the widget and plugin
         * 
         */
         static function on_activate()
         {
-            $data_post = array("action" => "create_new_counter", "site_url" => get_option('siteurl'));
-            if ($result = self::sendToServer($data_post)) {  
-                if (isset($result['status']) && $result['status'] == "ok" && 
-                isset($result['default_image']) && isset($result['default_hidden']) && 
-                isset($result['code']) && isset($result['images'])) {
-                    add_option(_PREFIX . 'counter_id', $result['counter_id'], '', true);
-                    add_option(_PREFIX . 'default_image', $result['default_image'], '', true);
-                    add_option(_PREFIX . 'default_hidden', $result['default_hidden'], '', true);
-                    add_option(_PREFIX . 'counter_code', $result['code']);
-                    add_option(_PREFIX . 'image_color', $result['image_color']);
-                    add_option(_PREFIX . 'images', $result['images'], '', true);
-                    add_option(_PREFIX . 'email', $result['email'], '', true);
-                    add_option(_PREFIX . 'password', $result['password'], '', true);
-                    self::$data_counter['counter_id'] = $result['counter_id'];
-                    self::$data_counter['images'] = $result['images'];
-                }
-            } 
+
+            self::$activate = self::check_site();
+
+            if (self::$activate) {
+                $data_post = array("action" => "create_new_counter", "site_url" => get_option('siteurl'));
+                if ($result = self::sendToServer($data_post)) {  
+                    if (isset($result['status']) && $result['status'] == "ok" && 
+                    isset($result['default_image']) && isset($result['default_hidden']) && 
+                    isset($result['code']) && isset($result['images'])) {
+                        add_option(_PREFIX . 'counter_id', $result['counter_id'], '', true);
+                        add_option(_PREFIX . 'default_image', $result['default_image'], '', true);
+                        add_option(_PREFIX . 'default_hidden', $result['default_hidden'], '', true);
+                        add_option(_PREFIX . 'counter_code', $result['code']);
+                        add_option(_PREFIX . 'image_color', $result['image_color']);
+                        add_option(_PREFIX . 'images', $result['images'], '', true);
+                        add_option(_PREFIX . 'email', $result['email'], '', true);
+                        add_option(_PREFIX . 'password', $result['password'], '', true);
+                        self::$data_counter['counter_id'] = $result['counter_id'];
+                        self::$data_counter['images'] = $result['images'];
+                    }
+                } 
+            }
         }
 
         /**
@@ -209,19 +216,21 @@
             global $menu;
 
             // position in admin menu
-            $menu_position = '26.1234567891';
+            if(self::check_site()) {
+                $menu_position = '26.1234567891';
 
-            add_menu_page(
-            'Statistic for Counter', 
-            'Counter Statistic', 
-            'manage_options', 
-            'counter_free_plagin', 
-            array('counter_free_plagin', 'stat_view'),
-            plugins_url('/free-counter.org_icon.png', __FILE__),
-            $menu_position
-            );
+                add_menu_page(
+                'Statistic for Counter', 
+                'Counter Statistic', 
+                'manage_options', 
+                'counter_free_plagin', 
+                array('counter_free_plagin', 'stat_view'),
+                plugins_url('/free-counter.org_icon.png', __FILE__),
+                $menu_position
+                );
+            }
         }
-        
+
         /**
         * @method save_account - Registration for the hide password statistic and great opportunities
         * 
@@ -479,7 +488,7 @@
                 echo "&nbsp;&nbsp;&nbsp;<a href=\"$url_next\">Next Page</a>&nbsp;&nbsp;";
             }
         }
-        
+
         /**
         * sorting input data(array)
         * 
@@ -509,7 +518,7 @@
 
             return array("max" => $max, "data" => $data);
         }
-        
+
         /**
         * @method widgets_initial - initialize widget
         * 
@@ -533,7 +542,28 @@
             }
             return true;
         }
-        
+        private static function check_site()
+        {
+            $siteUrl = get_option('siteurl');
+            if($siteUrl) {
+                if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' && !preg_match("/192\.168\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])) {
+                    $p_url = parse_url($siteUrl);
+                    if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
+                        return false;
+                    } else {
+                        if(isset($p_url['path']) && strpos($_SERVER['REQUEST_URI'], $p_url['path']) === false) {
+                            return true;
+                        }
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+            return true;
+        }
+
         /**
         * @method notices - Check the settings for Free-counter
         * 
@@ -542,23 +572,28 @@
         {
             $siteUrl = get_option('siteurl');
             if($siteUrl) {
-                if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1') {
+                if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' && !preg_match("/192\.168\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])) {
                     $p_url = parse_url($siteUrl);
                     if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
                         self::noticesMsg('Check the settings, `siteurl` and $_SERVER[\'HTTP_HOST\'] - are not identical<br /> Plugin may not work properly.');
+                        return false;
                     } else {
                         if(isset($p_url['path']) && strpos($_SERVER['REQUEST_URI'], $p_url['path']) === false) {
                             self::noticesMsg('Check the settings, `siteurl` or path in  <br /> Plugin may not work properly.');
+                            return false;
                         }
                     }
                 } else {
-                    self::noticesMsg('I`m sorry we do not serve "localhost"!!!');
+                    self::noticesMsg('I am sorry we do not serve "localhost" or Local Network.');
+                    return false;
                 }
             } else {
                 self::noticesMsg('Check the settings: `siteurl`<br /> Plugin may not work properly.');
+                return false;
             }
+            return true;
         }
-        
+
         /**
         * @method noticesMsg - output message to admin panel 
         * 
@@ -566,6 +601,7 @@
         */
         private static function noticesMsg($msg = "")
         {
+
             if (!empty($msg)) {
                 echo '<div class="error" style="text-align: center;">
                 <span style="color: red; font-size: 14px; font-weight: bold; margin-top:3px;">Attention!!!</span><br />
@@ -574,6 +610,7 @@
                 </span>
                 </div>';
             }
+
         }
 
 
@@ -596,7 +633,7 @@
                 $this->WP_Widget('counter_free_widget', 'Free Counter', $widget_ops, $control_ops );
             }
         }
-        
+
         /**
         *  this is method shows the counter in sidebar
         * 
@@ -608,7 +645,7 @@
             $code = get_option(_PREFIX . 'counter_code');
             echo $code;
         }
-        
+
         /**
         * shows form in widget page
         * 
@@ -660,6 +697,7 @@
         }
     } 
     if(is_admin()) {
+        add_action('admin_notices', array('counter_free_plagin', 'notices'));
         register_activation_hook( __FILE__, array('counter_free_plagin','on_activate'));
         register_deactivation_hook( __FILE__, array('counter_free_plagin','on_deactivate'));
         add_action('admin_menu', array('counter_free_plagin', 'draw_menu'));
@@ -668,8 +706,6 @@
         add_action('wp_ajax_nopriv_check_stat', array('counter_free_plagin', 'check_stat') );   
         add_action('admin_print_styles', "adding_files_style" );   
         add_action('admin_print_scripts', "adding_files_script" );   
-        add_action('admin_notices', array('counter_free_plagin', 'notices'));
-
     }      
     add_action('widgets_init', array('counter_free_plagin', 'widgets_initial') );
 
