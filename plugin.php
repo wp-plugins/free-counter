@@ -312,7 +312,7 @@
                 }
 
                 if (isset($res['stat']['record']['data']) && isset($res['stat']['count_data'])) {   
-                    $data_hash = chackArray($res['stat']['record']['data'], $data_hash, $res['stat']['record']['visitors_count']);
+                    $data_hash = checkArray($res['stat']['record']['data'], $data_hash, $res['stat']['record']['visitors_count']);
                     $data['count_hash'] = count($data_hash);
                     if ($data['count_hash'] > $res['stat']['count_data']) {
                         $temp = array_chunk($data_hash, $res['stat']['count_data']);
@@ -712,7 +712,7 @@
     /**
     * check hash and server data
     */
-    function chackArray($ar1, $ar2, $count_array)
+    function checkArray($ar1, $ar2, $count_array)
     {
         if (count($ar2) > 0) {
             $unique = array();
