@@ -5,7 +5,7 @@
     * Plugin URI: www.free-counter.org
     * Description: <a href="http://www.free-counter.org/">Counter and statistics</a> plugin and Widget for WordPress.
     * Author: Free counter
-    * Version: 1.0.6
+    * Version: 1.1
     * Author URI: http://www.free-counter.org/
     */
 
@@ -30,10 +30,7 @@
         */
         static function on_activate()
         {
-
-            self::$activate = self::check_site();
-
-            if (self::$activate) {
+            if (self::check_site()) {
                 $data_post = array("action" => "create_new_counter", "site_url" => get_option('siteurl'));
                 if ($result = self::sendToServer($data_post)) {  
                     if (isset($result['status']) && $result['status'] == "ok" && 
@@ -205,6 +202,7 @@
             delete_option(_PREFIX . 'image_color');
             delete_option(_PREFIX . 'email');
             delete_option(_PREFIX . 'password');
+            delete_option(_PREFIX . 'activate');
         }
 
         /**
@@ -545,24 +543,27 @@
         private static function check_site()
         {
             $siteUrl = get_option('siteurl');
-            if($siteUrl) {
-                if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' 
-                          && !preg_match("/192\.168\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
-                          && !preg_match("/172\.(16|17|18|19|20|21|22)\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
-                          && !preg_match("/10.\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])) {
-                    $p_url = parse_url($siteUrl);
-                    if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
-                        return false;
-                    } else {
-                        if(isset($p_url['path']) && strpos($_SERVER['REQUEST_URI'], $p_url['path']) === false) {
-                            return true;
+            $active = get_option(_PREFIX . 'activate');
+            if($active === false || $active == 0) {
+                if($siteUrl) {
+                    if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' 
+                    && !preg_match("/192\.168\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
+                    && !preg_match("/172\.(16|17|18|19|20|21|22)\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
+                    && !preg_match("/10.\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])) {
+                        $p_url = parse_url($siteUrl);
+                        if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
+                            return false;
+                        } else {
+                            if(isset($p_url['path']) && strpos($_SERVER['REQUEST_URI'], $p_url['path']) === false) {
+                                return true;
+                            }
                         }
+                    } else {
+                        return false;
                     }
                 } else {
                     return false;
                 }
-            } else {
-                return false;
             }
             return true;
         }
@@ -574,28 +575,31 @@
         public static function notices()
         {
             $siteUrl = get_option('siteurl');
-            if($siteUrl) {
-                if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' 
-                   && !preg_match("/192\.168\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
-                   && !preg_match("/172\.(16|17|18|19|20|21|22)\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])
-                   && !preg_match("/10.\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])) {
-                    $p_url = parse_url($siteUrl);
-                    if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
-                        self::noticesMsg('Check the settings, `siteurl` and $_SERVER[\'HTTP_HOST\'] - are not identical<br /> Plugin may not work properly.');
-                        return false;
-                    } else {
-                        if(isset($p_url['path']) && strpos($_SERVER['REQUEST_URI'], $p_url['path']) === false) {
-                            self::noticesMsg('Check the settings, `siteurl` or path in  <br /> Plugin may not work properly.');
+            $active = get_option(_PREFIX . 'activate');
+            if($active === false || $active == 0) {
+                if($siteUrl) {
+                    if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' 
+                    && !preg_match("/192\.168\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
+                    && !preg_match("/172\.(16|17|18|19|20|21|22)\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])
+                    && !preg_match("/10.\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])) {
+                        $p_url = parse_url($siteUrl);
+                        if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
+                            self::noticesMsg('Check the WordPress settings, <strong>WordPress URL</strong> and <strong>Physical Web Page URL</strong>of your Home Page - must be equal.');
                             return false;
+                        } else {
+                            if(isset($p_url['path']) && strpos($_SERVER['REQUEST_URI'], $p_url['path']) === false) {
+                                self::noticesMsg('Check the WordPress settings, <strong>WordPress URL</strong> or Home Path URL (E.g. http://www.domain.com/[home_path]). Plugin may not work properly.');
+                                return false;
+                            }
                         }
+                    } else {
+                        self::noticesMsg('We are sorry, but we do not serve "localhost" or Local Networks.');
+                        return false;
                     }
                 } else {
-                    self::noticesMsg('I am sorry we do not serve "localhost" or Local Network.');
+                    self::noticesMsg('Check your URL in WordPress settings for your Web Page.');
                     return false;
                 }
-            } else {
-                self::noticesMsg('Check the settings: `siteurl`<br /> Plugin may not work properly.');
-                return false;
             }
             return true;
         }
@@ -611,15 +615,28 @@
             if (!empty($msg)) {
                 echo '<div class="error" style="text-align: center;">
                 <span style="color: red; font-size: 14px; font-weight: bold; margin-top:3px;">Attention!!!</span><br />
-                <span> Plugin FREE-COUNTER</span><br />
-                <span>' . $msg . '
-                </span>
+                <span> Plugin FREE-COUNTER: ' . $msg . ' Anyway <a href="javascript:activate_free_counter()"><strong>activate</strong></a>.</span><br />
+                <span>If you have any requests or suggestions, please <a href="' . SERVER_URL_VISIT . 'contact" target="_blank">contact us</a>.</span>
+                <form action="' . admin_url( 'admin-post.php' ) . '" method="post" name="form_activate_free_counter" id="form_activate_free_counter">
+                <input type="hidden" name="action" value="activate_plugin" >
+                </form>
+                <script>
+                function activate_free_counter()
+                {
+                document.form_activate_free_counter.submit();
+                }
+                </script>
                 </div>';
             }
 
         }
 
-
+        public static function activate_plugin()
+        {
+            add_option(_PREFIX . 'activate', 1, '', true);
+            self::on_activate();
+            header("location: " . admin_url( 'admin.php?page=counter_free_plagin' ));
+        }
     }
 
     class counter_free_widget extends WP_Widget {
@@ -709,6 +726,7 @@
         add_action('admin_menu', array('counter_free_plagin', 'draw_menu'));
         add_action('admin_post_exportToCsv', array('counter_free_plagin', 'exportToCsv') );
         add_action('admin_post_save_account', array('counter_free_plagin', 'save_account') );
+        add_action('admin_post_activate_plugin', array('counter_free_plagin', 'activate_plugin') );
         add_action('wp_ajax_nopriv_check_stat', array('counter_free_plagin', 'check_stat') );   
         add_action('admin_print_styles', "adding_files_style" );   
         add_action('admin_print_scripts', "adding_files_script" );   

@@ -4,7 +4,7 @@ Donate link: http://www.free-counter.org/donate/
 Tags: widget, counter, Post, plugin, admin, posts, sidebar, twitter, google, comments, images, page, image, links, hit counter, buddypress, free, widgets, shortcode, wordpress
 Requires at least: 2.5.1
 Tested up to: 4.1.1
-Stable tag: 1.0.6
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
