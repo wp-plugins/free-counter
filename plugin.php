@@ -548,7 +548,7 @@
                 if($siteUrl) {
                     if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' 
                     && !preg_match("/192\.168\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
-                    && !preg_match("/172\.(16|17|18|19|20|21|22|23|24|25)\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
+                    && !preg_match("/172\.(16|17|18|19|20|21|22|23|24|25|26)\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
                     && !preg_match("/10.\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])) {
                         $p_url = parse_url($siteUrl);
                         if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
@@ -580,7 +580,7 @@
                 if($siteUrl) {
                     if(strpos($_SERVER['HTTP_HOST'], 'localhost') === false && $_SERVER['REMOTE_ADDR'] != '127.0.0.1' 
                     && !preg_match("/192\.168\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR']) 
-                    && !preg_match("/172\.(16|17|18|19|20|21|22|23|24|25)\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])
+                    && !preg_match("/172\.(16|17|18|19|20|21|22|23|24|25|26)\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])
                     && !preg_match("/10.\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/i", $_SERVER['REMOTE_ADDR'])) {
                         $p_url = parse_url($siteUrl);
                         if ($p_url['host'] != $_SERVER['HTTP_HOST']) {
