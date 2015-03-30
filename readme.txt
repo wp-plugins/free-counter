@@ -1,7 +1,7 @@
 === Free counter ===
 Contributors: Free-counter
 Donate link: http://www.free-counter.org/donate/
-Tags: widget, counter, Post, plugin, admin, posts, sidebar, twitter, google, comments, images, page, image, links, hit counter, buddypress, free, widgets, shortcode, wordpress, stat
+Tags: widget, counter, Post, plugin, admin, posts, sidebar, twitter, google, comments, images, page, image, links, hit counter, buddypress, free, widgets, shortcode, wordpress, stat, stats
 Requires at least: 2.5.1
 Tested up to: 4.1.1
 Stable tag: 1.1
