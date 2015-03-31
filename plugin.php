@@ -322,7 +322,7 @@
             $record = self::getHash();
             $stat_chart_day = (isset($res["stat"]['all']["all_month"]) ? $res["stat"]['all']["all_month"] : array());
             $stat_chart_month = (isset($res["stat"]['all']["months"]) ? $res["stat"]['all']["months"] : array());
-            $stat_chart_week = (isset($res["stat"]['weel_days_stat']) ? $res["stat"]['weel_days_stat'] : array());
+            $stat_chart_week = (isset($res["stat"]['week_days_stat']) ? $res["stat"]['week_days_stat'] : array());
             ob_start();
             include(plugin_dir_path( __FILE__ ) . "template/statistic.php");
             $form = ob_get_clean();
