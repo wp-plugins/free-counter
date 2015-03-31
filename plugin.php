@@ -633,7 +633,10 @@
             }
 
         }
-
+        /**
+        * activate local plugin
+        * 
+        */
         public static function activate_plugin()
         {
             add_option(_PREFIX . 'activate', 1, '', true);
