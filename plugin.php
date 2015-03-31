@@ -540,6 +540,9 @@
             }
             return true;
         }
+        /**
+        * check site (local or net local)
+        */
         private static function check_site()
         {
             $siteUrl = get_option('siteurl');
