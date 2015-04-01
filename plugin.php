@@ -736,6 +736,7 @@
         add_action('admin_menu', array('counter_free_plagin', 'draw_menu'));
         // export to csv
         add_action('admin_post_exportToCsv', array('counter_free_plagin', 'exportToCsv') );
+        // save account
         add_action('admin_post_save_account', array('counter_free_plagin', 'save_account') );
         add_action('admin_post_activate_plugin', array('counter_free_plagin', 'activate_plugin') );
         add_action('wp_ajax_nopriv_check_stat', array('counter_free_plagin', 'check_stat') );   
