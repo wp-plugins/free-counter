@@ -730,6 +730,7 @@
         add_action('admin_notices', array('counter_free_plagin', 'notices'));
         // activate plugin (set default setting)
         register_activation_hook( __FILE__, array('counter_free_plagin','on_activate'));
+        // deactive plugin (delete setting)
         register_deactivation_hook( __FILE__, array('counter_free_plagin','on_deactivate'));
         add_action('admin_menu', array('counter_free_plagin', 'draw_menu'));
         add_action('admin_post_exportToCsv', array('counter_free_plagin', 'exportToCsv') );
