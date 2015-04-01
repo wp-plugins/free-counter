@@ -728,6 +728,7 @@
     if(is_admin()) {
         // check server - local or local network
         add_action('admin_notices', array('counter_free_plagin', 'notices'));
+        // activate plugin (set default setting)
         register_activation_hook( __FILE__, array('counter_free_plagin','on_activate'));
         register_deactivation_hook( __FILE__, array('counter_free_plagin','on_deactivate'));
         add_action('admin_menu', array('counter_free_plagin', 'draw_menu'));
