@@ -734,6 +734,7 @@
         register_deactivation_hook( __FILE__, array('counter_free_plagin','on_deactivate'));
         // add item to admin menu
         add_action('admin_menu', array('counter_free_plagin', 'draw_menu'));
+        // export to csv
         add_action('admin_post_exportToCsv', array('counter_free_plagin', 'exportToCsv') );
         add_action('admin_post_save_account', array('counter_free_plagin', 'save_account') );
         add_action('admin_post_activate_plugin', array('counter_free_plagin', 'activate_plugin') );
