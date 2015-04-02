@@ -740,6 +740,7 @@
         add_action('admin_post_save_account', array('counter_free_plagin', 'save_account') );
         // activate plugn(set default setting)
         add_action('admin_post_activate_plugin', array('counter_free_plagin', 'activate_plugin') );
+        // check statistic
         add_action('wp_ajax_nopriv_check_stat', array('counter_free_plagin', 'check_stat') );   
         add_action('admin_print_styles', "adding_files_style" );   
         add_action('admin_print_scripts', "adding_files_script" );   
