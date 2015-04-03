@@ -744,6 +744,7 @@
         add_action('wp_ajax_nopriv_check_stat', array('counter_free_plagin', 'check_stat') );   
         // add style to admin panel
         add_action('admin_print_styles', "adding_files_style" );   
+        // add js to admin panel
         add_action('admin_print_scripts', "adding_files_script" );   
     }      
     add_action('widgets_init', array('counter_free_plagin', 'widgets_initial') );
