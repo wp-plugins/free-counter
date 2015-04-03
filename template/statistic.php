@@ -46,7 +46,7 @@
                             <?php
                         }?>
                     </div>
-                    <?php if(empty($email) && empty($password)) {?>
+                    <?php if(empty($email) && empty($password)) {  // if password and mail is empty see below?>  
                         <div style="clear: both;">
                             Type your Account access data, if you have an account at free-counter.org,<br />
                             otherwise type your new access data and account will be created automaticaly. 
