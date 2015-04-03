@@ -53,7 +53,9 @@ function setColorPicker(id, default_value, id_send_color_image, id_counter_tpe, 
         }
     });
 } 
-
+/**
+* search element in array
+*/
 function in_array(what, where) {
     var tmp;
     for(var i=0; i < where.length; i++) {
