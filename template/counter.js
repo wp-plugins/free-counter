@@ -68,6 +68,9 @@ function in_array(what, where) {
 }
 
 last_id = "";
+/**
+* show detail info
+*/
 function openInfo(id)
 {
     if (last_id != "") {
