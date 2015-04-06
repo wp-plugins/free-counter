@@ -18,7 +18,8 @@
 
         // data result 
         static private $result = "";
-
+        
+        // counter data
         static private $data_counter = array(); 
 
         static private $file_hash = "";
