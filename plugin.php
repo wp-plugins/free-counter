@@ -409,7 +409,11 @@
             return ob_get_clean();
         }
 
-
+        /**
+        * save cache data
+        * 
+        * @param mixed $data
+        */
         static function saveHash($data = array())
         {
             file_put_contents(self::$file_hash, serialize($data));
