@@ -414,7 +414,10 @@
         {
             file_put_contents(self::$file_hash, serialize($data));
         }
-
+        /**
+        * get cached data
+        * 
+        */
         static function getHash() 
         {
             $data = array();
