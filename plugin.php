@@ -16,6 +16,7 @@
     define("PAGES_NEXT_PREV_COUNT", 3);
     class counter_free_plagin {
 
+        // data result 
         static private $result = "";
 
         static private $data_counter = array(); 
