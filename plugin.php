@@ -18,40 +18,13 @@
 
         // data result 
         static private $result = "";
-        
+
         // counter data
         static private $data_counter = array(); 
         // file name for cache
         static private $file_hash = "";
-
+        //flag activate
         static private $activate = true;
-
-        /**
-        * @method on_activate - this method to adding the default option for the widget and plugin
-        * 
-        */
-        static function on_activate()
-        {
-            if (self::check_site()) {
-                $data_post = array("action" => "create_new_counter", "site_url" => get_option('siteurl'));
-                if ($result = self::sendToServer($data_post)) {  
-                    if (isset($result['status']) && $result['status'] == "ok" && 
-                    isset($result['default_image']) && isset($result['default_hidden']) && 
-                    isset($result['code']) && isset($result['images'])) {
-                        add_option(_PREFIX . 'counter_id', $result['counter_id'], '', true);
-                        add_option(_PREFIX . 'default_image', $result['default_image'], '', true);
-                        add_option(_PREFIX . 'default_hidden', $result['default_hidden'], '', true);
-                        add_option(_PREFIX . 'counter_code', $result['code']);
-                        add_option(_PREFIX . 'image_color', $result['image_color']);
-                        add_option(_PREFIX . 'images', $result['images'], '', true);
-                        add_option(_PREFIX . 'email', $result['email'], '', true);
-                        add_option(_PREFIX . 'password', $result['password'], '', true);
-                        self::$data_counter['counter_id'] = $result['counter_id'];
-                        self::$data_counter['images'] = $result['images'];
-                    }
-                } 
-            }
-        }
 
         /**
         * @method sendToServer - this method sending to server the data 
@@ -114,6 +87,33 @@
                     preg_match("/(a:|s:|i:).*/", self::$result, $res);
                     if (isset($res[0])) {
                         return unserialize($res[0]);
+                    }
+                } 
+            }
+        }
+        /**
+        * @method on_activate - this method to adding the default option for the widget and plugin
+        * 
+        */
+        static function on_activate()
+        {
+            if (self::check_site()) {
+                $data_post = array("action" => "create_new_counter", "site_url" => get_option('siteurl'));
+                if ($result = self::sendToServer($data_post)) {  
+                    if (isset($result['status']) && $result['status'] == "ok" && 
+                    isset($result['default_image']) && isset($result['default_hidden']) && 
+                    isset($result['code']) && isset($result['images'])) {
+                        add_option(_PREFIX . 'counter_id', $result['counter_id'], '', true);
+                        add_option(_PREFIX . 'default_image', $result['default_image'], '', true);
+                        add_option(_PREFIX . 'default_hidden', $result['default_hidden'], '', true);
+                        add_option(_PREFIX . 'counter_code', $result['code']);
+                        add_option(_PREFIX . 'image_color', $result['image_color']);
+                        add_option(_PREFIX . 'images', $result['images'], '', true);
+                        add_option(_PREFIX . 'email', $result['email'], '', true);
+                        add_option(_PREFIX . 'password', $result['password'], '', 'yes');
+                        
+                        self::$data_counter['images'] = $result['images'];
+                        self::$data_counter['counter_id'] = $result['counter_id'];
                     }
                 } 
             }
