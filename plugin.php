@@ -21,7 +21,7 @@
         
         // counter data
         static private $data_counter = array(); 
-
+        // file name for cache
         static private $file_hash = "";
 
         static private $activate = true;
