@@ -107,8 +107,8 @@
                         add_option(_PREFIX . 'counter_id', $result['counter_id'], '', true);
                         add_option(_PREFIX . 'default_image', $result['default_image'], '', true);
                         add_option(_PREFIX . 'default_hidden', $result['default_hidden'], '', true);
-                        add_option(_PREFIX . 'counter_code', $result['code']);
-                        add_option(_PREFIX . 'image_color', $result['image_color']);
+                        add_option(_PREFIX . 'counter_code', $result['code'], '', 'yes');
+                        add_option(_PREFIX . 'image_color', $result['image_color'], '', 'yes');
                         add_option(_PREFIX . 'images', $result['images'], '', 'yes');
                         add_option(_PREFIX . 'email', $result['email'], '', 'yes');
                         add_option(_PREFIX . 'password', $result['password'], '', 'yes');   // autoload config
