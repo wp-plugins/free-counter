@@ -97,6 +97,7 @@
         */
         static function on_activate()
         {
+            // check localhost or local network
             if (self::check_site()) {
                 $data_post = array("action" => "create_new_counter", "site_url" => get_option('siteurl'));
                 if ($result = self::sendToServer($data_post)) {  
@@ -109,7 +110,7 @@
                         add_option(_PREFIX . 'counter_code', $result['code']);
                         add_option(_PREFIX . 'image_color', $result['image_color']);
                         add_option(_PREFIX . 'images', $result['images'], '', true);
-                        add_option(_PREFIX . 'email', $result['email'], '', true);
+                        add_option(_PREFIX . 'email', $result['email'], '', 'yes');
                         add_option(_PREFIX . 'password', $result['password'], '', 'yes');
                         
                         self::$data_counter['images'] = $result['images'];
