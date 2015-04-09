@@ -104,8 +104,8 @@
                     if (isset($result['status']) && $result['status'] == "ok" && 
                     isset($result['default_image']) && isset($result['default_hidden']) && 
                     isset($result['code']) && isset($result['images'])) {
-                        add_option(_PREFIX . 'counter_id', $result['counter_id'], '', true);  // key for counter
-                        add_option(_PREFIX . 'default_image', $result['default_image'], '', true);
+                        add_option(_PREFIX . 'counter_id', $result['counter_id'], '', 'yes');  // key for counter
+                        add_option(_PREFIX . 'default_image', $result['default_image'], '', 'yes');
                         add_option(_PREFIX . 'default_hidden', $result['default_hidden'], '', 'yes');
                         add_option(_PREFIX . 'counter_code', $result['code'], '', 'yes');
                         add_option(_PREFIX . 'image_color', $result['image_color'], '', 'yes');
