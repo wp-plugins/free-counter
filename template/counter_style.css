@@ -312,3 +312,15 @@ div.progress_load {
     line-height: 18px;
     margin-top: 9px;
 }
+
+@media only screen and (max-width: 758px) {
+/*
+vertical tablet computer
+*/
+}
+@media only screen and (max-width: 524px) {
+/*phone*/
+}
+@media only screen and (max-width: 960px) {
+    
+}
