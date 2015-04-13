@@ -85,8 +85,8 @@
                     <input type="button" style="height: 36px; width: 100px;  margin-right: 7px;" class="button button-primary" value="Sign In" onclick="window.open('<?php echo SERVER_URL_VISIT. "logincustomer?login={$email}&pass={$password}&m=logincustomer&loginf=loginsend"?>', 'Autologin');" />
                 </div>
                 <div class="inline" style="margin-top:0px;">
-                    <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "forgotpassword"?>', 'Forgot Password');">Forgot password?</a> <br />
-                    <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "?contact=show"?>', 'contact');">Need help? / Contact us</a>
+                    <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "forgotpassword"?>', 'Forgot Password'); return false;">Forgot password?</a> <br />
+                    <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "?contact=show"?>', 'contact'); return false;">Need help? / Contact us</a>
                 </div>
             </div>
         </div>
