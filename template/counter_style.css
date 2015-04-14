@@ -197,6 +197,8 @@
 .moovdiv div.div-stats {
     position: relative;
     width: auto;
+    margin-left:5px;
+    margin-top:15px;
 }
 
 .table-stat-moovdiv {
