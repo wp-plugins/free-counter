@@ -198,7 +198,9 @@
     position: relative;
     width: auto;
     margin-left:5px;
-    padding-top:20px;
+}
+.moovdiv div.col-row{
+    margin-top: 10px;
 }
 
 .table-stat-moovdiv {
