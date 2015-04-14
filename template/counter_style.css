@@ -192,7 +192,11 @@
     width: 30%;
 }
 .moovdiv {
-
+    
+}
+.moovdiv div.div-stats {
+    position: relative;
+    width: auto;
 }
 
 .table-stat-moovdiv {
@@ -322,5 +326,7 @@ vertical tablet computer
 /*phone*/
 }
 @media only screen and (max-width: 960px) {
-    
+    /*
+    tablet
+    */
 }
