@@ -201,8 +201,9 @@
 }
 .moovdiv div.col-row{
     margin-top: 10px;
-    padding-right: 20px;
     clear:both;
+    padding-left: 10px;
+    text-align: center;
 }
 
 .table-stat-moovdiv {
