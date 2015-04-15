@@ -197,10 +197,12 @@
 .moovdiv div.div-stats {
     position: relative;
     width: auto;
-    margin-left:5px;
+    margin-left: 15px;
 }
 .moovdiv div.col-row{
     margin-top: 10px;
+    padding-right: 20px;
+    clear:both;
 }
 
 .table-stat-moovdiv {
