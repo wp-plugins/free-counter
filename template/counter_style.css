@@ -196,13 +196,12 @@
 }
 .moovdiv div.div-stats {
     position: relative;
-    width: auto;
-    margin-left: 15px;
+    width: 50%;
+    padding-left: 15px;
 }
 .moovdiv div.col-row{
     margin-top: 10px;
     clear:both;
-    padding-left: 10px;
     text-align: center;
 }
 
