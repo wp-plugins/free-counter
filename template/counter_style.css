@@ -206,6 +206,11 @@
     font-size: 16px;
     padding-top:5px;
 }
+.moovdiv span.title-row {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+}
 
 .table-stat-moovdiv {
     background: none repeat scroll 0 0 #FFFFFF;
