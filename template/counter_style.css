@@ -197,10 +197,13 @@
 .moovdiv div.div-stats {
     position: relative;
     width: 50%;
+    margin-left:16px;
+    margin-right:20px;
 }
 .moovdiv div.col-row{
     clear:both;
     text-align: center;
+    padding: 10px 15px;
 }
 .moovdiv span.title-row {
     font-size: 20px;
