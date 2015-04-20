@@ -197,19 +197,16 @@
 .moovdiv div.div-stats {
     position: relative;
     width: 50%;
-    margin-left:16px;
-    margin-right:20px;
 }
 .moovdiv div.col-row{
-    clear:both;
+    float:left;
     text-align: center;
-    padding: 10px 15px;
+    font-size: 14px;
+    
 }
 .moovdiv span.title-row {
     font-size: 20px;
     font-weight: bold;
-    margin:10px;
-    padding: 10px 15px;
 }
 
 .table-stat-moovdiv {
