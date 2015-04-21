@@ -204,11 +204,6 @@
     font-size: 14px;
     
 }
-.moovdiv span.title-row {
-    font-size: 20px;
-    font-weight: bold;
-}
-
 .table-stat-moovdiv {
     background: none repeat scroll 0 0 #FFFFFF;
     border-spacing: 0;
@@ -325,6 +320,12 @@ div.progress_load {
 .last {
     line-height: 18px;
     margin-top: 9px;
+}
+.moovdiv span.title-row {
+    font-size: 20px;
+    width: 50%;
+    height: 33px;
+    line-height: 15px;
 }
 
 @media only screen and (max-width: 758px) {
