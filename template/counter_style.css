@@ -197,12 +197,13 @@
 .moovdiv div.div-stats {
     position: relative;
     width: 50%;
+    margin: 10px 5px;
 }
 .moovdiv div.col-row{
     float:left;
     text-align: center;
     font-size: 14px;
-    
+    border: 1px solid #fff;
 }
 .table-stat-moovdiv {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -323,8 +324,7 @@ div.progress_load {
 }
 .moovdiv span.title-row {
     font-size: 20px;
-    width: 50%;
-    height: 33px;
+    width: 70%;
     line-height: 15px;
 }
 
