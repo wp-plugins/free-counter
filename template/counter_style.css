@@ -195,7 +195,6 @@
     
 }
 .moovdiv div.div-stats {
-    position: relative;
     width: 50%;
     margin: 10px 5px;
 }
@@ -203,7 +202,10 @@
     float:left;
     text-align: center;
     font-size: 14px;
-    border: 1px solid #fff;
+    width:200px;
+    border: 1px solid #D6D6D6;
+    background: none repeat scroll 0 0 #FFFFFF;
+    
 }
 .table-stat-moovdiv {
     background: none repeat scroll 0 0 #FFFFFF;
