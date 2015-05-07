@@ -195,12 +195,13 @@
 
 }
 .moovdiv div.div-stats {
-    font-size: 14px;
-    text-align: left;
-    padding: 10px 5px;
+    text-align: center;
+    border-bottom: 1px solid #ffffff;
 }
 .moovdiv div.col-row{
     width:25%;
+    margin-top: 3px;
+    padding:5px;
 }
 .table-stat-moovdiv {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -320,9 +321,8 @@ div.progress_load {
     margin-top: 9px;
 }
 .moovdiv span.title-row {
-    margin:15px 7px;
-    width: 50%;
-    padding:7px 12px;
+    font-size: 17px;
+    text-align: center;
 }
 
 @media only screen and (max-width: 758px) {
@@ -330,9 +330,7 @@ div.progress_load {
 vertical tablet computer
 */
 .moovdiv span.title-row {
-margin:9px 3px;
-width: 30%;
-padding:2px 5px;
+font-size: 12px;
 }
 }
 @media only screen and (max-width: 524px) {
