@@ -195,15 +195,13 @@
 
 }
 .moovdiv div.div-stats {
-    background: #D6D6D6;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
+    background: #dddddd;
 }
 .moovdiv div.col-row{
     width:25%;
-    line-height: 15px;
-    padding: 10px;
-    font-size: 14px;
+    float:left;
+    text-align: center;
+    line-height: 17px;
 }
 .table-stat-moovdiv {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -338,6 +336,10 @@ margin:3px;
 }
 @media only screen and (max-width: 524px) {
 /*phone*/
+.moovdiv span.title-row {
+font-size: 8px;
+margin:0;
+}
 }
 @media only screen and (max-width: 960px) {
 /*
