@@ -196,12 +196,15 @@
 }
 .moovdiv div.div-stats {
     background: #dddddd;
+    border:2px solid #cccccc;
+    top:0px;
+    overflow: hidden; 
 }
 .moovdiv div.col-row{
-    width:25%;
-    float:left;
-    text-align: center;
-    line-height: 17px;
+    display: inline;
+    margin-left:4px;
+    padding: 5px 2px;
+    background: #2db0aa;
 }
 .table-stat-moovdiv {
     background: none repeat scroll 0 0 #FFFFFF;
@@ -321,8 +324,9 @@ div.progress_load {
     margin-top: 9px;
 }
 .moovdiv span.title-row {
-    font-size: 15px;
-    margin: 5px;
+    font-size: 14px;
+    margin: 8px;
+    text-align: left;
 }
 
 @media only screen and (max-width: 758px) {
@@ -337,8 +341,9 @@ margin:3px;
 @media only screen and (max-width: 524px) {
 /*phone*/
 .moovdiv span.title-row {
-font-size: 8px;
-margin:0;
+font-size: 5px;
+text-align:center;
+padding:2px;
 }
 }
 @media only screen and (max-width: 960px) {
