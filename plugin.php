@@ -536,19 +536,7 @@
                 register_widget('counter_free_widget');
             }
         }
-        static function check_stat()
-        {
-            if (isset($_POST["id_counter"]) && isset($_POST['value_'])) {
-                $id_counter = get_option(_PREFIX . 'counter_id');
-                if ($id_counter == $_POST["id_counter"]) {
-                    $code = get_option(_PREFIX . 'counter_code');
-                    $code = preg_replace("/<!--end-->(.*)<\/div>/i", "<!--end-->{$_POST['value_']}</div>", $code);
-                    update_option(_PREFIX . 'counter_code', $code);
-                    echo "ok";
-                }
-            }
-            return true;
-        }
+       
         /**
         * check site (local or net local)
         */
