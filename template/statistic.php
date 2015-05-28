@@ -69,12 +69,17 @@
                 </ul>
             </div>
         </div>
+        <div class="review-registr" style="position: absolute; right: 0;" onclick="window.open('https://wordpress.org/support/view/plugin-reviews/free-counter?filter=5')">
+            <div class="title">Reviews & Suggestions</div>
+            <img src="<?php echo plugins_url('/img/fiveStars.png', dirname(__FILE__) ); ?>" alt="">
+            <div class="desc" >to help us maintain this project</div>
+        </div>
     </div> 
     <?php } else {
     ?>
     <div class="form-account-login">
         <div class="form-account-block-login">  
-            <div class="inline" style="margin-top:0px;">
+            <div class="inline" style="margin-top:14px;">
                 <div class="inline" style="margin-top:4px;">
                     <label for="<?php echo ('email'); ?>" class="label-form">E-mail:</label>
                     <input type="text" name="<?php echo ('email'); ?>" value="<?php echo $email; ?>" <?php if (!empty($email)) { echo ' readonly="readonly" ';}?>>
@@ -89,6 +94,11 @@
                     <a href="javascript:void(0)" onclick="window.open('<?php echo SERVER_URL_VISIT. "?contact=show"?>', 'contact'); return false;">Need help? / Contact us</a>
                 </div>
             </div>
+        </div>
+        <div class="review-block" onclick="window.open('https://wordpress.org/support/view/plugin-reviews/free-counter?filter=5')">
+            <div class="title">Reviews & Suggestions</div>
+            <img src="<?php echo plugins_url('/img/fiveStars.png', dirname(__FILE__) ); ?>" alt="">
+            <div class="desc" >to help us maintain this project</div>
         </div>
     </div>
     <?php
@@ -106,7 +116,7 @@
                     </th>
                     <th class="stat">
                         Today<br>
-                        <?php echo date("j.m.y"); ?>
+                        <?php echo date("d.m.Y"); ?>
                     </th>
                     <th class="stat">
                         Week<br>
@@ -163,23 +173,32 @@
                 ['Date', 'Visitor'],
                 <?php 
                     $count_date = 1;
-                    $c = count($stat_chart_day);
-                    $count_date = ceil($c/15)+1;
+                    $c = 0;
                     foreach ($stat_chart_day as $k => $v) {
                         foreach($v as $m => $days) {
+                            $c += count($days); 
                             foreach($days as $day => $count){
+                                if (strlen($m) == 1) { 
+                                    $m = '0' . $m;
+                                }
+                                if (strlen($day) == 1) { 
+                                    $day = '0' . $day;
+                                }
                                 echo "['$day.$m.$k', $count],";
+
                             }
                         }
-                }?>
+                    }
+                    $count_date = ceil($c / 15);
+                ?>
                 ]);
                 count_in_stat = '<?php echo $count_date; ?>' ;
                 var options = {
-                    width: '1200',
+                    width: '1200',                               
                     height:'200',
                     hAxis : {textStyle :{fontSize: 10}, showTextEvery:count_in_stat  },
                     colors:["#00f20e"],
-                    title: "Visitors User on Date"
+                    title: "Visitors per Date"
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById('all_stat_chart_day'));
@@ -195,17 +214,18 @@
                 var data = google.visualization.arrayToDataTable([
                 ['Date', 'Visitor'],
                 <?php 
+                    $c = ceil(count($stat_chart_month) / 7) + 1;
                     foreach ($stat_chart_month as $month => $days) {
                         echo "['$month', $days],";
                 }?>
                 ]);
-
+                count_in_month = '<?php echo $c; ?>' ;
                 var options = {
                     width: '400',
                     height:'200',
-                    hAxis : {textStyle :{fontSize: 10}, showTextEvery: 1 },
+                    hAxis : {textStyle :{fontSize: 10}, showTextEvery: count_in_month },
                     colors: ["#00e4f2"],
-                    title: "Visitors User on Month"
+                    title: "Visitors per Month"
                 };
 
                 var chart = new google.visualization.LineChart(document.getElementById('all_stat_chart_month'));
@@ -221,19 +241,17 @@
                 var data = google.visualization.arrayToDataTable([
                 ['Date', 'Visitor'],
                 <?php 
-                    foreach ($stat_chart_week as $days) {
-
-                        echo "['{$days['date']}', {$days['stat']}],";
-
+                    foreach ($stat_chart_week as $days => $c) {
+                        echo "['{$days}', {$c}],";
                 }?>
                 ]);
 
                 var options = {
                     width: '650',
                     height:'200',
-                    hAxis : {textStyle :{fontSize: 10}, showTextEvery: 1 },
+                    hAxis : {textStyle :{fontSize: 10}, showTextEvery: 1, slantedTextAngle: '20',slantedText:true },
                     colors: ["#00e4f2"],
-                    title: "Visitors User on Week"
+                    title: "Visitors per Week"
                 };
 
                 var chart = new google.visualization.ColumnChart(document.getElementById('all_stat_chart_week'));
@@ -510,10 +528,11 @@
                                 <a href="javascript:void(0)" onclick="openInfo('<?php echo $hash;?>')"><?php echo $value[3]['ip'];?></a>
                             </td>
                             <td class="stat">
-                                <img src="<?php echo IMG . $value[6]['img']; ?>" alt="<?php echo($value[6]['name']); ?>" title="<?php echo($value[6]['name']); ?>">
+                                <?php $os_name = isset($value[6]['operating_systems']) ? $value[6]['operating_systems'] : ""; ?>
+                                <img src="<?php echo IMG . $value[6]['img']; ?>" alt="<?php echo $os_name; ?>" title="<?php echo $os_name; ?>">
                             </td>
                             <td class="stat">
-                                <img src="<?php echo SERVER_URL_VISIT . $value[5]['img']?>" title="<?php echo $value[5]['name']; ?>" alt="<?php echo $value[5]['name']; ?>">
+                                <img src="<?php echo IMG . $value[5]['img']?>" title="<?php echo $value[5]['name']; ?>" alt="<?php echo $value[5]['name']; ?>">
                             </td>
                             <td class="stat">
                                 <?php echo $value[10]['count']; ?>
@@ -579,12 +598,13 @@
                                                     }
                                                 ?>
                                             </td> 
-                                             
+
                                         </tr>
                                         <tr>
                                             <td align="left">System</td>
                                             <td align="left">
-                                                <img src="<?php echo IMG . $value[6]['img']; ?>" alt="<?php echo($value[6]['name']); ?>" title="<?php echo($value[6]['name']); ?>">  <?php echo($value[6]['name']); ?>
+                                                <?php $os_name = isset($value[6]['operating_systems']) ? $value[6]['operating_systems'] : ""; ?>  
+                                                <img src="<?php echo IMG . $value[6]['img']; ?>" alt="<?php echo($os_name); ?>" title="<?php echo($os_name); ?>">  <?php echo($os_name); ?>
                                             </td>
                                             <td align="left">Possible text-query</td>
                                             <td align="left"><?php echo $value[11]['text_landing']?></td>
@@ -592,7 +612,7 @@
                                         <tr>
                                             <td align="left">Browser</td>
                                             <td align="left">
-                                                <img src="<?php echo  SERVER_URL_VISIT . $value[5]['img']?>" title="<?php echo $value[5]['name']; ?>" alt="<?php echo $value[5]['name']; ?>"> <?php echo str_replace("Browser ", "", $value[5]['name']); ?>
+                                                <img src="<?php echo  IMG . $value[5]['img']?>" title="<?php echo $value[5]['name']; ?>" alt="<?php echo $value[5]['name']; ?>"> <?php echo str_replace("Browser ", "", $value[5]['name']); ?>
                                             </td> 
                                             <td colspan="2"></td> 
                                         </tr>

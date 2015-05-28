@@ -5,7 +5,7 @@
     * Plugin URI: www.free-counter.org
     * Description: <a href="http://www.free-counter.org/">Counter and statistics</a> plugin and Widget for WordPress.
     * Author: Free counter
-    * Version: 1.1
+    * Version: 1.2
     * Author URI: http://www.free-counter.org/
     */
 
@@ -300,7 +300,7 @@
             $image_default = get_option(_PREFIX . 'default_image');
             $image_hidden = get_option(_PREFIX . 'default_hidden');
             $date_week = self::getWeekDates();
-            if ($res = self::sendToServer($data)) {   
+            if ($res = self::sendToServer($data)) { // $res = self::sendToServer($data) 
 
                 if (isset($res["stat"]['all']['months'])) {
                     $browser = isset($res["stat"]['all']['details']['browser']) ? self::sort_data($res["stat"]['all']['details']['browser']) : array();
@@ -355,7 +355,7 @@
                 $data[$i][2] = $val['3']['ip'];
                 $data[$i][3] = $val['3']['country'];
                 $data[$i][4] = $val['3']['city'];
-                $data[$i][5] = $val['6']['name'];
+                $data[$i][5] = $val[6]['operating_systems'];
                 $data[$i][6] = $val['5']['name'];
                 $data[$i][7] = $val['1'];
                 $data[$i][8] = $val['2'] . " Bit";

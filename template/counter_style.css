@@ -1,6 +1,38 @@
 /**
 * css www.free-counter.org
 */
+.review-block {
+    margin-top:0px;float:right; border-left:5px solid #fff; cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    padding: 0px 25px;
+}
+.review-block .desc, .review-registr .desc {
+    font-size: 13px;
+}
+.review-block .title, .review-registr .title {
+    margin-bottom: 8px;
+}
+.review-registr .title {
+    margin-top: 5px;
+}
+.review-registr .desc {
+    margin-bottom: 10px;
+}
+.review-registr {
+    position: absolute;
+    right: 0;
+    margin-top:0px; border:1px solid #2ea2cc; cursor: pointer;
+    border-radius: 5px;
+    background: #ffffcb;
+    text-align: center;
+    font-size: 16px;
+    padding: 0px 25px;
+    bottom: 0px;
+    margin-right: 60px;
+    margin-bottom : 15px;
+    box-shadow: 0 0 7px 3px rgba(90, 202, 242, 0.9);
+}
 .img-counter {
     cursor: pointer;
     border:2px solid #d2d2d2;
@@ -268,6 +300,7 @@ div.progress_load {
     padding: 10px;
     height: auto;
     overflow:hidden;
+    position: relative;
 }
 .form-account-title {
     margin-bottom: 20px;
@@ -277,6 +310,7 @@ div.progress_load {
     margin-left: 20px;
     float:left;
     width: 40%;
+    position: relative;
 }
 .form-account-login {
     margin-top: 10px;
