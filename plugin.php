@@ -216,9 +216,12 @@
         {
             
             // position in admin menu
+            if (!is_dir(plugin_dir_path( __FILE__ ) . "temp")) {
+                mkdir(plugin_dir_path( __FILE__ ) . "temp");
+            }
             if(self::check_site()) {
+                
                 $menu_position = '26.1234567891';
-
                 add_menu_page(
                 'Statistic for Counter', 
                 'Counter Statistic', 
@@ -338,7 +341,7 @@
         {
 
             $filename = "export.csv";
-            self::$file_hash = plugin_dir_path( __FILE__ ) . "/temp/data";
+            self::$file_hash = plugin_dir_path( __FILE__ ) . "temp/data";
             $data_hash = self::getHash(); 
 
             $data_keys = array(
