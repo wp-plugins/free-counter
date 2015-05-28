@@ -44,7 +44,6 @@ Don't forget our **notice**: many functions can be set in the User profile at fr
 * Counter Plugin-Dashboard with detailed information and statistics.
 * The users that are authorized to display the Free Homepage Counters dashboard can be defined using WordPress capabilities in the settings.
 * Free counter system can display visitor statistics data in your Wordpress Dashboard.
-* Your tracker logs data looks like this [statistic](http://www.free-counter.org/getstat.php?id=dd0c45cadf32) page for an example.
 
 Free counter plugin have also free support through our contact form at [www.free-counter.org](http://www.free-counter.org/contact/)
 Version 1 of free counter is willing to support the latest version of WordPress as much as possible, but this is always a work-in-progress. Do not hesitate to report any incompatibility!
