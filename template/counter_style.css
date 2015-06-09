@@ -227,16 +227,15 @@
 
 }
 .moovdiv div.div-stats {
-    background: #dddddd;
-    border:2px solid #cccccc;
-    top:0px;
-    overflow: hidden; 
+    font-size:14px;
+    font-weight: bold;
+    color: #585a5c;
+    padding:10px 2px;
 }
 .moovdiv div.col-row{
-    display: inline;
-    margin-left:4px;
-    padding: 5px 2px;
-    background: #2db0aa;
+    float:left;
+    margin-right: 15px;
+    border:1px solid #fff;
 }
 .table-stat-moovdiv {
     background: none repeat scroll 0 0 #FFFFFF;
