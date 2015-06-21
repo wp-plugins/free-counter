@@ -14,7 +14,7 @@ Counter & Statistics Plugin and Widget for WordPress
 
 Free Counter is a free of charge statistic and counter plugin with no external library dependency.
 
-Saves timestamps, visited URL, referring URL, IP addresses (1), operating systems
+Saves Unique visitor stats, timestamps, visited URL, referring URL, IP addresses (1), operating systems
 and browser informations into the database, and can display the total hits,
 unique hits and other statistics in your WordPress pages.
 
@@ -23,6 +23,7 @@ unique hits and other statistics in your WordPress pages.
 Don't forget our **notice**: many functions can be set in the User profile at free-counter.org
 
 * Powerful hit counter statistics
+* Unique visitor stats
 * Hidden or unvisible counter
 * Hidden IPs (specially for german users ;) ). This function is optional.
 * Hourly, daily, weekly and monthly traffic stats
