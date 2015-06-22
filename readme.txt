@@ -23,7 +23,7 @@ unique hits and other statistics in your WordPress pages.
 Don't forget our **notice**: many functions can be set in the User profile at free-counter.org
 
 * Powerful hit counter statistics
-* Unique visitor stats
+* Unique visitor Stats
 * Hidden or unvisible counter
 * Hidden IPs (specially for german users ;) ). This function is optional.
 * Hourly, daily, weekly and monthly traffic stats
