@@ -86,7 +86,7 @@ Yes of course, you can change this settings in your widget of [free counter](htt
 
 = I would like protect my counter with a password. Can I do it? =
 
-Yes of course.
+Yes of course. You can protect your counter statistics with a password.
 
 = I have a lot of Homepages/Websites. Can I administrate this Websites with one and the same account? =
 
