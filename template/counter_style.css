@@ -383,4 +383,8 @@ padding:2px;
 /*
 tablet
 */
+.moovdiv span.title-row {
+font-size: 7px;
+padding:4px;
+}
 }
